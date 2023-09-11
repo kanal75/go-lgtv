@@ -11,8 +11,8 @@ import (
 
 	wol "github.com/ghthor/gowol"
 
-	"github.com/dhickie/go-lgtv/connection"
-	iputil "github.com/dhickie/go-lgtv/util/ip"
+	"github.com/kanal75/go-lgtv/connection"
+	iputil "github.com/kanal75/go-lgtv/util/ip"
 )
 
 // ErrNotConnected is returned if an request is attempted to a TV which is not connected to the client
