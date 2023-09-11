@@ -87,6 +87,14 @@ This package uses Gorilla's websocket implementation (https://github.com/gorilla
 
 ## Release notes
 
+**V1.1.4**
+
+- Some tidying up and fix for Go Module.
+
+**V1.1.3**
+
+- Changed connection to secure websocket.
+
 **V1.1.1**
 
 - Made `IsConnected` publically available.
