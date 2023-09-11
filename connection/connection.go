@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"sync"
 	"time"
+	"crypto/tls"
 
 	"encoding/json"
 
@@ -14,7 +15,7 @@ import (
 )
 
 const (
-	wsPort                 = 3000
+	wssPort = 3001
 	registerTimeoutSeconds = 60
 	requestTimeoutSeconds  = 10
 )
@@ -47,13 +48,15 @@ type Connection struct {
 
 // NewConnection creates a new web socket connection to the TV at the given IP address. The timeout is in milliseconds.
 func NewConnection(ip net.IP, timeout int) (*Connection, error) {
-	url := fmt.Sprintf("ws://%v:%v", ip, wsPort)
+	url = fmt.Sprintf("wss://%v:%v", ip, wssPort)
 
 	// Dial the websocket connection, with a timeout
 	conChan := make(chan *websocket.Conn)
 	errChan := make(chan error)
 	go func(url string) {
-		c, _, err := websocket.DefaultDialer.Dial(url, nil)
+		dialer := websocket.DefaultDialer
+		dialer.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		c, _, err := dialer.Dial(url, nil)
 		if err != nil {
 			errChan <- err
 			return
