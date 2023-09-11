@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ghthor/gowol"
+	wol "github.com/ghthor/gowol"
 
 	"github.com/dhickie/go-lgtv/connection"
 	iputil "github.com/dhickie/go-lgtv/util/ip"
