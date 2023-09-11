@@ -48,7 +48,7 @@ type Connection struct {
 
 // NewConnection creates a new web socket connection to the TV at the given IP address. The timeout is in milliseconds.
 func NewConnection(ip net.IP, timeout int) (*Connection, error) {
-	url = fmt.Sprintf("wss://%v:%v", ip, wssPort)
+	url := fmt.Sprintf("wss://%v:%v", ip, wssPort)
 
 	// Dial the websocket connection, with a timeout
 	conChan := make(chan *websocket.Conn)
